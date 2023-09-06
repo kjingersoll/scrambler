@@ -1,5 +1,6 @@
 const wordDisplay = document.getElementById("word");
 const messageDisplay = document.getElementById("message");
+const guessForm = document.getElementById("guess-form");
 const guessInput = document.getElementById("guess");
 const submitButton = document.getElementById("submit");
 
@@ -33,9 +34,11 @@ function scrambleWord(word) {
     }
     mixedWord = wordArray.join("");
     wordDisplay.innerText = mixedWord;
+    console.log(word);
 }
 
-function checkMatch() {
+function checkMatch(event) {
+    event.preventDefault();
     let guess = guessInput.value;
     if (guess == word) {
         messageDisplay.innerText = "Correct!";
@@ -48,4 +51,11 @@ function checkMatch() {
 
 getPossibles()
 
-submitButton.addEventListener("mouseup", checkMatch);
+/*submitButton.addEventListener("mouseup", checkMatch);
+window.addEventListener('keyup', function(e) {
+    if (e.key === 'Enter') {
+        checkMatch()
+    }
+});*/
+
+guessForm.addEventListener("submit", checkMatch);
