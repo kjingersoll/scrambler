@@ -3,6 +3,7 @@ const messageDisplay = document.getElementById("message");
 const guessForm = document.getElementById("guess-form");
 const guessInput = document.getElementById("guess");
 const submitButton = document.getElementById("submit");
+const playAgainButton = document.getElementById("play-again");
 
 let word = "countdown";
 let mixedWord = "";
@@ -19,7 +20,7 @@ function checkLength(value) {
     return value.length == 8;
 }
 
-function getWord(possibles) {
+function getWord() {
     let correctLengthWords = possibles.filter(checkLength);
     random = Math.floor(Math.random() * correctLengthWords.length);
     word = correctLengthWords[random];
@@ -43,19 +44,20 @@ function checkMatch(event) {
     if (guess == word) {
         messageDisplay.innerText = "Correct!";
         wordDisplay.innerText = word;
+        playAgainButton.classList.remove("hide");
     } else {
         messageDisplay.innerText = "Try Again";
         guessInput.value = "";
     }
 }
 
+function playAgain() {
+    guessInput.value = "";
+    messageDisplay.innerText = "";
+    getWord();
+}
+
 getPossibles()
 
-/*submitButton.addEventListener("mouseup", checkMatch);
-window.addEventListener('keyup', function(e) {
-    if (e.key === 'Enter') {
-        checkMatch()
-    }
-});*/
-
 guessForm.addEventListener("submit", checkMatch);
+playAgainButton.addEventListener("click", playAgain);
