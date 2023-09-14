@@ -17,7 +17,7 @@ async function getPossibles() {
 }
 
 function checkLength(value) {
-    return value.length == 8;
+    return value.length == 5;
 }
 
 function getWord() {
@@ -28,12 +28,14 @@ function getWord() {
 }
 
 function scrambleWord(word) {
+    do {
     let wordArray = word.split("");
     for (let i=wordArray.length - 1; i > 0; i--) {
         const swap = Math.floor(Math.random() * (i + 1));
         [wordArray[i], wordArray[swap]] = [wordArray[swap], wordArray[i]];
     }
-    mixedWord = wordArray.join("");
+    mixedWord = wordArray.join("");}
+    while (mixedWord === word);
     wordDisplay.innerText = mixedWord;
     console.log(word);
 }

@@ -1,3 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 33vh 33vh 33vh;
+    grid-template-rows: 20vw 20vw 20vw 20vw 20vw;
+    justify-content: center;
+}
+
+header {
+    text-align: center;
+    grid-column: 1/4;
+}
+
+main {
+    text-align: center;
+    grid-column: 1/4;
+    grid-row: 2/6;
+}
+
 .hide {
     display: none;
 }
