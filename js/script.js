@@ -10,9 +10,9 @@ let mixedWord = "";
 let possibles = [];
 
 async function getPossibles() {
-    const res = await fetch("https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt");
+    const res = await fetch("https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-usa.txt");
     const data = await res.text();
-    possibles = data.split("\r\n");
+    possibles = data.split("\n");
     getWord(possibles)
 }
 
