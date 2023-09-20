@@ -4,21 +4,20 @@
 }
 
 body {
-    display: grid;
-    grid-template-columns: 33vh 33vh 33vh;
-    grid-template-rows: 20vw 20vw 20vw 20vw 20vw;
-    justify-content: center;
+    text-align: center;
 }
 
-header {
-    text-align: center;
-    grid-column: 1/4;
+svg {
+    width: 90vw;
+    margin: 10px;
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 70vw;
+    letter-spacing: .05em;
 }
 
-main {
-    text-align: center;
-    grid-column: 1/4;
-    grid-row: 2/6;
+#submit {
+    display: block;
+    margin: auto;
 }
 
 .hide {

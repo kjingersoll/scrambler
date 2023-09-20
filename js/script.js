@@ -1,4 +1,5 @@
 const wordDisplay = document.getElementById("word");
+const ticketText = document.getElementById("ticket-text");
 const messageDisplay = document.getElementById("message");
 const guessForm = document.getElementById("guess-form");
 const guessInput = document.getElementById("guess");
@@ -36,16 +37,16 @@ function scrambleWord(word) {
     }
     mixedWord = wordArray.join("");}
     while (mixedWord === word);
-    wordDisplay.innerText = mixedWord;
+    ticketText.textContent = mixedWord.toUpperCase();
     console.log(word);
 }
 
 function checkMatch(event) {
     event.preventDefault();
     let guess = guessInput.value;
-    if (guess == word) {
+    if (guess === word) {
         messageDisplay.innerText = "Correct!";
-        wordDisplay.innerText = word;
+        ticketText.textContent = word.toLocaleUpperCase();
         playAgainButton.classList.remove("hide");
     } else {
         messageDisplay.innerText = "Try Again";
