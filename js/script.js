@@ -1,5 +1,7 @@
-const wordDisplay = document.getElementById("word");
-const ticketText = document.getElementById("ticket-text");
+const ticketContainer = document.getElementById("ticket-container");
+const ticketSides = document.getElementById("ticket-sides");
+const scrambleText = document.getElementById("scramble-text");
+const answerText = document.getElementById("answer-text");
 const messageDisplay = document.getElementById("message");
 const guessForm = document.getElementById("guess-form");
 const guessInput = document.getElementById("guess");
@@ -37,7 +39,8 @@ function scrambleWord(word) {
     }
     mixedWord = wordArray.join("");}
     while (mixedWord === word);
-    ticketText.textContent = mixedWord.toUpperCase();
+    scrambleText.innerText = mixedWord.toUpperCase();
+    answerText.innerText = word.toUpperCase();
     console.log(word);
 }
 
@@ -45,8 +48,9 @@ function checkMatch(event) {
     event.preventDefault();
     let guess = guessInput.value;
     if (guess === word) {
+        ticketSides.classList.add("flip");
+        ticketContainer.classList.add("flip");
         messageDisplay.innerText = "Correct!";
-        ticketText.textContent = word.toLocaleUpperCase();
         playAgainButton.classList.remove("hide");
     } else {
         messageDisplay.innerText = "Try Again";
@@ -55,6 +59,7 @@ function checkMatch(event) {
 }
 
 function playAgain() {
+    ticketSides.classList.remove("flip");
     guessInput.value = "";
     messageDisplay.innerText = "";
     getWord();

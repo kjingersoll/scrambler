@@ -16,27 +16,16 @@
         <h1>The Scrambler</h1>
     </header>
     <main>
-        <svg
-   viewBox="0 0 1200 600"
-   version="1.1"
-   id="ticket">
-  <g
-     id="layer1">
-    <path
-       id="rect1"
-       style="fill:#c8ab37;stroke-width:1.75748;stroke:none"
-       d="M 100 0 A 100 100 0 0 1 0 100 L 0 500 A 100 100 0 0 1 100 600 L 1100 600 A 100 100 0 0 1 1200 500 L 1200 100 A 100 100 0 0 1 1100 0 L 100 0 z " />
-    <rect
-       style="fill:none;stroke:#806600;stroke-width:2.457;stroke-dasharray:none"
-       id="rect4"
-       width="950"
-       height="400"
-       x="125"
-       y="100"
-       ry="12.73526" />
-    <text id="ticket-text" x="50%" y="50%" dominant-baseline="central" text-anchor="middle">TICKET</text>
-  </g>
-</svg>
+        <div id="ticket-container">
+            <div id="ticket-sides">
+              <div id="ticket-front">
+                <h2 id="scramble-text"></h2>
+              </div>
+              <div id="ticket-back">
+                <h2 id="answer-text"></h2>
+              </div>
+            </div>
+        </div>
         <p id="message"></p>
         <p id="word"></p>
         <form action="" id="guess-form">
