@@ -49,7 +49,6 @@ function checkMatch(event) {
     let guess = guessInput.value;
     if (guess === word) {
         ticketSides.classList.add("flip");
-        ticketContainer.classList.add("flip");
         messageDisplay.innerText = "Correct!";
         playAgainButton.classList.remove("hide");
     } else {
