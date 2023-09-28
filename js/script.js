@@ -51,6 +51,7 @@ function checkMatch(event) {
         ticketSides.classList.add("flip");
         messageDisplay.innerText = "Correct!";
         playAgainButton.classList.remove("hide");
+        guessForm.classList.add("hide");
     } else {
         messageDisplay.innerText = "Try Again";
         guessInput.value = "";
@@ -59,6 +60,8 @@ function checkMatch(event) {
 
 function playAgain() {
     ticketSides.classList.remove("flip");
+    guessForm.classList.remove("hide");
+    playAgainButton.classList.add("hide");
     guessInput.value = "";
     messageDisplay.innerText = "";
     getWord();

@@ -54,6 +54,8 @@ body {
     font-family: 'Neonderthaw', cursive;
     font-size: 15vw;
     margin: 3vh 0;
+    color: #ff0000;
+    text-shadow: .5vw .5vw 1vw #000, 0 0 5vw #ff0000;
   }
 
   h2 {
