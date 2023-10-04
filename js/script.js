@@ -64,6 +64,7 @@ function checkMatch(event) {
     } else {
         messageDisplay.innerText = "No More Guesses";
         playAgainButton.classList.remove("hide");
+        ticketContainer.classList.add("fail");
         guessForm.classList.add("hide");
         guessCounter.innerText = `${remainingGuesses} Guesses Remaining`;
     }
@@ -71,6 +72,7 @@ function checkMatch(event) {
 
 function playAgain() {
     ticketSides.classList.remove("flip");
+    ticketContainer.classList.remove("fail");
     guessForm.classList.remove("hide");
     playAgainButton.classList.add("hide");
     guessInput.value = "";
