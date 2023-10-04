@@ -3,6 +3,7 @@ const ticketSides = document.getElementById("ticket-sides");
 const scrambleText = document.getElementById("scramble-text");
 const answerText = document.getElementById("answer-text");
 const messageDisplay = document.getElementById("message");
+const guessCounter = document.getElementById("guess-counter");
 const guessForm = document.getElementById("guess-form");
 const guessInput = document.getElementById("guess");
 const submitButton = document.getElementById("submit");
@@ -11,6 +12,7 @@ const playAgainButton = document.getElementById("play-again");
 let word = "countdown";
 let mixedWord = "";
 let possibles = [];
+let remainingGuesses = 10;
 
 async function getPossibles() {
     const res = await fetch("https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-usa.txt");
@@ -41,20 +43,29 @@ function scrambleWord(word) {
     while (mixedWord === word);
     scrambleText.innerText = mixedWord.toUpperCase();
     answerText.innerText = word.toUpperCase();
+    guessCounter.innerText = `${remainingGuesses} Guesses Remaining`;
     console.log(word);
 }
 
 function checkMatch(event) {
     event.preventDefault();
+    remainingGuesses --;
     let guess = guessInput.value;
     if (guess === word) {
         ticketSides.classList.add("flip");
         messageDisplay.innerText = "Correct!";
+        guessCounter.innerText = " ";
         playAgainButton.classList.remove("hide");
         guessForm.classList.add("hide");
-    } else {
+    } else if(remainingGuesses >= 1){
         messageDisplay.innerText = "Try Again";
         guessInput.value = "";
+        guessCounter.innerText = `${remainingGuesses} Guesses Remaining`;
+    } else {
+        messageDisplay.innerText = "No More Guesses";
+        playAgainButton.classList.remove("hide");
+        guessForm.classList.add("hide");
+        guessCounter.innerText = `${remainingGuesses} Guesses Remaining`;
     }
 }
 
@@ -64,6 +75,7 @@ function playAgain() {
     playAgainButton.classList.add("hide");
     guessInput.value = "";
     messageDisplay.innerText = "";
+    remainingGuesses = 10;
     getWord();
 }
 
