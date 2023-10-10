@@ -1,5 +1,7 @@
 const ticketContainer = document.getElementById("ticket-container");
 const ticketSides = document.getElementById("ticket-sides");
+const ticketFront = document.getElementById("ticket-front");
+const ticketBack = document.getElementById("ticket-back");
 const scrambleText = document.getElementById("scramble-text");
 const answerText = document.getElementById("answer-text");
 const messageDisplay = document.getElementById("message");
@@ -21,12 +23,18 @@ function setDifficulty(e) {
     if(e.target.id == "easy") {
         difficulty = "easy";
         totalGuesses = 10;
+        ticketFront.style.backgroundImage = "url('../img/ticket-blue.svg')";
+        ticketBack.style.backgroundImage = "url('../img/ticket-blue.svg')";
     } else if(e.target.id == "medium") {
         difficulty = "medium";
         totalGuesses = 5;
+        ticketFront.style.backgroundImage = "url('../img/ticket.svg')";
+        ticketBack.style.backgroundImage = "url('../img/ticket.svg')";
     } else if(e.target.id == "hard") {
         difficulty = "hard";
         totalGuesses = 3;
+        ticketFront.style.backgroundImage = "url('../img/ticket-red.svg')";
+        ticketBack.style.backgroundImage = "url('../img/ticket-red.svg')";
     };
     getWord();
 }

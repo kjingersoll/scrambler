@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   viewBox="0 0 1200 600"
+   version="1.1"
+   id="svg1"
+   height="600"
+   width="1200"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   sodipodi:docname="ticket-blue.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="0.5"
+     inkscape:cx="683"
+     inkscape:cy="384"
+     inkscape:window-width="1392"
+     inkscape:window-height="1027"
+     inkscape:window-x="264"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1" />
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <path
+       id="rect1"
+       style="fill:#448cbb;stroke-width:1.75748;stroke:none;fill-opacity:1"
+       d="M 100 0 A 100 100 0 0 1 0 100 L 0 500 A 100 100 0 0 1 100 600 L 1100 600 A 100 100 0 0 1 1200 500 L 1200 100 A 100 100 0 0 1 1100 0 L 100 0 z " />
+    <rect
+       style="fill:none;stroke:#806600;stroke-width:2.457;stroke-dasharray:none"
+       id="rect4"
+       width="950"
+       height="400"
+       x="125"
+       y="100"
+       ry="12.73526" />
+  </g>
+</svg>

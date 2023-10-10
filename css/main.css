@@ -9,6 +9,14 @@ body {
     color: #fff;
 }
 
+.difficulty {
+  width: 20vw;
+  height: 10vw;
+  margin: 0 0 5vw 0;
+  border: none;
+  display: inline-block;
+}
+
 #ticket-container {
     background-color: transparent;
     width: 80vw;
@@ -68,6 +76,24 @@ body {
 #submit {
     display: block;
     margin: auto;
+}
+
+#easy {
+  background-color: #448cbbff;
+  background: url("../img/ticket-blue.svg");
+  background-size: cover;
+}
+
+#medium {
+  background-color: #c8ab37ff;
+  background: url("../img/ticket.svg");
+  background-size: cover;
+}
+
+#hard {
+  background-color: #d35847ff;
+  background: url("../img/ticket-red.svg");
+  background-size: cover;
 }
 
 .hide {
