@@ -8,21 +8,43 @@ const guessForm = document.getElementById("guess-form");
 const guessInput = document.getElementById("guess");
 const submitButton = document.getElementById("submit");
 const playAgainButton = document.getElementById("play-again");
+const difficultySelect = document.getElementById("difficult-select");
 
 let word = "countdown";
 let mixedWord = "";
 let possibles = [];
+let totalGuesses = 10;
 let remainingGuesses = 10;
+let difficulty = "easy";
+
+function setDifficulty(e) {
+    if(e.target.id == "easy") {
+        difficulty = "easy";
+        totalGuesses = 10;
+    } else if(e.target.id == "medium") {
+        difficulty = "medium";
+        totalGuesses = 5;
+    } else if(e.target.id == "hard") {
+        difficulty = "hard";
+        totalGuesses = 3;
+    };
+    getWord();
+}
 
 async function getPossibles() {
     const res = await fetch("https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-usa.txt");
     const data = await res.text();
     possibles = data.split("\n");
-    getWord(possibles)
 }
 
 function checkLength(value) {
-    return value.length == 5;
+    if (difficulty === "easy") {
+        return value.length < 6
+    } else if (difficulty === "medium") {
+        return value.length > 5 && value.length < 9
+    } else if (difficulty === "hard") {
+        return value.length >8
+    };
 }
 
 function getWord() {
@@ -43,6 +65,7 @@ function scrambleWord(word) {
     while (mixedWord === word);
     scrambleText.innerText = mixedWord.toUpperCase();
     answerText.innerText = word.toUpperCase();
+    remainingGuesses = totalGuesses;
     guessCounter.innerText = `${remainingGuesses} Guesses Remaining`;
     console.log(word);
 }
@@ -77,11 +100,12 @@ function playAgain() {
     playAgainButton.classList.add("hide");
     guessInput.value = "";
     messageDisplay.innerText = "";
-    remainingGuesses = 10;
+    remainingGuesses = totalGuesses;
     getWord();
 }
 
 getPossibles()
 
+difficultySelect.addEventListener("click", setDifficulty);
 guessForm.addEventListener("submit", checkMatch);
 playAgainButton.addEventListener("click", playAgain);
