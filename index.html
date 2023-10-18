@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/main.css" />
   <script  src="js/script.js" defer></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@300&family=Asap:wght@300&family=Neonderthaw&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@300&family=Rye&family=Neonderthaw&family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -16,9 +16,9 @@
     </header>
     <main>
       <div id="difficult-select">
-        <button id="easy" class="difficulty">Easy</button>
-        <button id="medium" class="difficulty">Medium</button>
-        <button id="hard" class="difficulty">Hard</button>
+        <button id="easy" class="difficulty">EASY</button>
+        <button id="medium" class="difficulty">MEDIUM</button>
+        <button id="hard" class="difficulty">HARD</button>
       </div>
         <div id="ticket-container">
             <div id="ticket-sides">
@@ -30,8 +30,10 @@
               </div>
             </div>
         </div>
-        <p id="message"></p>
-        <p id="guess-counter"></p>
+        <div id="feedback">
+          <p id="guess-counter"><span id="guesses-left"></span> Guesses Left</p>
+          <p id="message"></p>
+        </div>
         <form action="" id="guess-form">
             <label for="guess">The Word Is:</label>
             <input type="text" name="guess" id="guess" />

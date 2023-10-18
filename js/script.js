@@ -5,7 +5,7 @@ const ticketBack = document.getElementById("ticket-back");
 const scrambleText = document.getElementById("scramble-text");
 const answerText = document.getElementById("answer-text");
 const messageDisplay = document.getElementById("message");
-const guessCounter = document.getElementById("guess-counter");
+const guessCounter = document.getElementById("guesses-left");
 const guessForm = document.getElementById("guess-form");
 const guessInput = document.getElementById("guess");
 const submitButton = document.getElementById("submit");
@@ -47,11 +47,11 @@ async function getPossibles() {
 
 function checkLength(value) {
     if (difficulty === "easy") {
-        return value.length < 6
+        return value.length < 6 && value.length > 2
     } else if (difficulty === "medium") {
         return value.length > 5 && value.length < 9
     } else if (difficulty === "hard") {
-        return value.length >8
+        return value.length > 8 && value.length < 11
     };
 }
 
@@ -74,7 +74,7 @@ function scrambleWord(word) {
     scrambleText.innerText = mixedWord.toUpperCase();
     answerText.innerText = word.toUpperCase();
     remainingGuesses = totalGuesses;
-    guessCounter.innerText = `${remainingGuesses} Guesses Remaining`;
+    guessCounter.innerText = remainingGuesses;
     console.log(word);
 }
 
@@ -85,19 +85,18 @@ function checkMatch(event) {
     if (guess === word) {
         ticketSides.classList.add("flip");
         messageDisplay.innerText = "Correct!";
-        guessCounter.innerText = " ";
         playAgainButton.classList.remove("hide");
         guessForm.classList.add("hide");
     } else if(remainingGuesses >= 1){
         messageDisplay.innerText = "Try Again";
         guessInput.value = "";
-        guessCounter.innerText = `${remainingGuesses} Guesses Remaining`;
+        guessCounter.innerText = remainingGuesses;
     } else {
         messageDisplay.innerText = "No More Guesses";
         playAgainButton.classList.remove("hide");
         ticketContainer.classList.add("fail");
         guessForm.classList.add("hide");
-        guessCounter.innerText = `${remainingGuesses} Guesses Remaining`;
+        guessCounter.innerText = remainingGuesses;
     }
 }
 
