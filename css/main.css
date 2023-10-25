@@ -152,3 +152,7 @@ input[type="text"] {
   filter: blur(3px) grayscale(100%);
   opacity: 0.6;
 }
+
+#difficult-select.hide {
+  display: none;
+}
