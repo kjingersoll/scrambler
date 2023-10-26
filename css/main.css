@@ -122,8 +122,29 @@ h2 {
 }
 
 #feedback {
-  margin: 3vw 0;
   font-family: "Rye", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8vw 0 5vw 0;
+}
+
+#board {
+  border: 2vw solid #473700;
+  border-radius: 4px;
+  border-image: url(../img/frame.png) 101 round;
+  width: 70vw;
+  height: 35vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#board p {
+  width: 100%;
+  font-size: 6vw;
 }
 
 #guesses-left {
