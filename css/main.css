@@ -5,7 +5,7 @@
 
 body {
   text-align: center;
-  background-color: #000;
+  background: #000 url("../img/stars.png") repeat-x;
   color: #fff;
 }
 
@@ -130,6 +130,7 @@ h2 {
 }
 
 #board {
+  background: #2b2b2b;
   border: 2vw solid #473700;
   border-radius: 4px;
   border-image: url(../img/frame.png) 101 round;
