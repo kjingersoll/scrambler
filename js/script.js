@@ -5,7 +5,8 @@ const ticketBack = document.getElementById("ticket-back");
 const scrambleText = document.getElementById("scramble-text");
 const answerText = document.getElementById("answer-text");
 const messageDisplay = document.getElementById("message");
-const guessCounter = document.getElementById("guesses-left");
+const guessCounter = document.getElementById("guess-counter");
+const guessNumbers = document.getElementsByClassName("guess");
 const guessForm = document.getElementById("guess-form");
 const guessInput = document.getElementById("guess");
 const submitButton = document.getElementById("submit");
@@ -18,24 +19,25 @@ let mixedWord = "";
 let possibles = [];
 let totalGuesses = 10;
 let remainingGuesses = 10;
+const guessesArray = [];
 let difficulty = "easy";
 
 function setDifficulty(e) {
   if (e.target.id == "easy") {
     difficulty = "easy";
     totalGuesses = 10;
-    ticketFront.style.backgroundImage = "url('../img/ticket-blue.svg')";
-    ticketBack.style.backgroundImage = "url('../img/ticket-blue.svg')";
+    ticketFront.style.backgroundImage = "url('img/ticket-blue.svg')";
+    ticketBack.style.backgroundImage = "url('img/ticket-blue.svg')";
   } else if (e.target.id == "medium") {
     difficulty = "medium";
     totalGuesses = 5;
-    ticketFront.style.backgroundImage = "url('../img/ticket.svg')";
-    ticketBack.style.backgroundImage = "url('../img/ticket.svg')";
+    ticketFront.style.backgroundImage = "url('img/ticket.svg')";
+    ticketBack.style.backgroundImage = "url('img/ticket.svg')";
   } else if (e.target.id == "hard") {
     difficulty = "hard";
     totalGuesses = 3;
-    ticketFront.style.backgroundImage = "url('../img/ticket-red.svg')";
-    ticketBack.style.backgroundImage = "url('../img/ticket-red.svg')";
+    ticketFront.style.backgroundImage = "url('img/ticket-red.svg')";
+    ticketBack.style.backgroundImage = "url('img/ticket-red.svg')";
   }
   playArea.classList.remove("hide");
   difficultySelect.classList.add("hide");
@@ -79,7 +81,7 @@ function scrambleWord(word) {
   scrambleText.innerText = mixedWord.toUpperCase();
   answerText.innerText = word.toUpperCase();
   remainingGuesses = totalGuesses;
-  guessCounter.innerText = remainingGuesses;
+  writeGuesses();
   console.log(word);
 }
 
@@ -95,14 +97,31 @@ function checkMatch(event) {
   } else if (remainingGuesses >= 1) {
     messageDisplay.innerText = "Try Again";
     guessInput.value = "";
-    guessCounter.innerText = remainingGuesses;
+    manageGuesses();
   } else {
     messageDisplay.innerText = "No More Guesses";
     playAgainButton.classList.remove("hide");
     ticketContainer.classList.add("fail");
     guessForm.classList.add("hide");
-    guessCounter.innerText = remainingGuesses;
+    manageGuesses();
   }
+}
+
+function writeGuesses() {
+  for (let i = 1; i <= totalGuesses; i++) {
+    let elementI = document.createElement("div");
+    elementI.innerHTML = `${i}`;
+    elementI.classList.add("guess");
+    guessCounter.append(elementI);
+  }
+  for (guess of guessNumbers) {
+    guessesArray.push(guess);
+  }
+  console.log(guessesArray);
+}
+
+function manageGuesses() {
+  guessesArray[remainingGuesses].classList.add("crossed-out");
 }
 
 function playAgain() {
@@ -113,6 +132,10 @@ function playAgain() {
   guessInput.value = "";
   messageDisplay.innerText = "";
   remainingGuesses = totalGuesses;
+  for (guess of guessesArray) {
+    guess.remove();
+  }
+  guessesArray.length = 0;
   difficultySelect.classList.remove("hide");
   playArea.classList.add("hide");
 }

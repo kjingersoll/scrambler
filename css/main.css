@@ -34,6 +34,7 @@ body {
   perspective: 100vw;
   margin: auto;
   font-family: "Asap Condensed", sans-serif;
+  color: #473700;
 }
 
 #ticket-sides {
@@ -57,7 +58,6 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  color: #000;
   letter-spacing: 0.5vw;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -122,7 +122,7 @@ h2 {
 }
 
 #feedback {
-  font-family: "Rye", serif;
+  font-family: "Permanent Marker", cursive;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,8 +148,20 @@ h2 {
   font-size: 6vw;
 }
 
-#guesses-left {
-  font-family: "Permanent Marker", cursive;
+#guess-counter,
+.guess,
+.crossed-out {
+  display: inline;
+  font-size: 6vw;
+  margin: 0 1.5vw 0 1.5vw;
+}
+
+.crossed-out {
+  opacity: 0.5;
+}
+
+#message {
+  font-family: "Rye", system-ui;
 }
 
 label {
@@ -177,4 +189,7 @@ input[type="text"] {
 
 #difficult-select.hide {
   display: none;
+}
+
+@media only screen and (orientation: landscape) {
 }
