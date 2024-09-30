@@ -1,3 +1,4 @@
+const title = document.getElementById("title");
 const ticketContainer = document.getElementById("ticket-container");
 const ticketSides = document.getElementById("ticket-sides");
 const ticketFront = document.getElementById("ticket-front");
@@ -95,11 +96,11 @@ function checkMatch(event) {
     playAgainButton.classList.remove("hide");
     guessForm.classList.add("hide");
   } else if (remainingGuesses >= 1) {
-    messageDisplay.innerText = "Try Again";
+    messageDisplay.innerText = "Incorrect";
     guessInput.value = "";
     manageGuesses();
   } else {
-    messageDisplay.innerText = "No More Guesses";
+    messageDisplay.innerText = "Try Again";
     playAgainButton.classList.remove("hide");
     ticketContainer.classList.add("fail");
     guessForm.classList.add("hide");
@@ -140,8 +141,15 @@ function playAgain() {
   playArea.classList.add("hide");
 }
 
+function checkReturnToMain() {
+  if (confirm(`Go to Difficulty Select? \n(current Scramble will be lost)`)) {
+    playAgain();
+  }
+}
+
 getPossibles();
 
 difficultySelect.addEventListener("click", setDifficulty);
 guessForm.addEventListener("submit", checkMatch);
 playAgainButton.addEventListener("click", playAgain);
+title.addEventListener("click", checkReturnToMain);
