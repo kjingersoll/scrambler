@@ -27,18 +27,18 @@ function setDifficulty(e) {
   if (e.target.id == "easy") {
     difficulty = "easy";
     totalGuesses = 10;
-    ticketFront.style.backgroundImage = "url('img/ticket-blue.svg')";
-    ticketBack.style.backgroundImage = "url('img/ticket-blue.svg')";
+    ticketFront.style.background = "var(--green)";
+    ticketBack.style.background = "var(--green)";
   } else if (e.target.id == "medium") {
     difficulty = "medium";
     totalGuesses = 5;
-    ticketFront.style.backgroundImage = "url('img/ticket.svg')";
-    ticketBack.style.backgroundImage = "url('img/ticket.svg')";
+    ticketFront.style.background = "var(--orange)";
+    ticketBack.style.background = "var(--orange)";
   } else if (e.target.id == "hard") {
     difficulty = "hard";
     totalGuesses = 3;
-    ticketFront.style.backgroundImage = "url('img/ticket-red.svg')";
-    ticketBack.style.backgroundImage = "url('img/ticket-red.svg')";
+    ticketFront.style.background = "var(--maroon)";
+    ticketBack.style.background = "var(--maroon)";
   }
   playArea.classList.remove("hide");
   difficultySelect.classList.add("hide");

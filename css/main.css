@@ -3,28 +3,61 @@
   margin: 0;
 }
 
-body {
-  text-align: center;
-  background: #000 url("../img/stars.png") repeat-x;
-  color: #fff;
+:root {
+  --green: #296560;
+  --orange: #c44900;
+  --cream: #efd6ac;
+  --maroon: #432534;
+  --navy: #04151f;
 }
 
-#difficult-select {
+body {
+  text-align: center;
+  background: var(--navy);
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: "Asap Condensed", sans-serif;
+}
+
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#difficult-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background: var(--cream);
+  width: 75vw;
+  height: 125vw;
+  border-radius: 3vw;
+}
+
 .difficulty {
-  margin: 5vw 0;
-  width: 60vw;
-  height: 30vw;
+  /*margin: 5vw;*/
+  width: 65vw;
+  height: 35vw;
   border: none;
   display: block;
   font-family: "Asap Condensed", sans-serif;
   font-size: 10vw;
-  color: #473700;
+  color: var(--cream);
+  border-radius: 3vw;
 }
 
 #ticket-container {
@@ -34,7 +67,7 @@ body {
   perspective: 100vw;
   margin: auto;
   font-family: "Asap Condensed", sans-serif;
-  color: #473700;
+  color: var(--cream);
 }
 
 #ticket-sides {
@@ -53,11 +86,11 @@ body {
 
 #ticket-front,
 #ticket-back {
-  background-image: url("../img/ticket.svg");
   background-size: contain;
   position: absolute;
   width: 100%;
   height: 100%;
+  border-radius: 3vw;
   letter-spacing: 0.5vw;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -73,9 +106,8 @@ body {
 h1 {
   font-family: "Neonderthaw", cursive;
   font-size: 15vw;
-  margin: 3vh 0;
-  color: #ff0000;
-  text-shadow: 0.5vw 0.5vw 1vw #000, 0 0 5vw #ff0000;
+  font-weight: normal;
+  color: var(--orange);
 }
 
 h2 {
@@ -87,7 +119,7 @@ h2 {
   display: block;
   margin: auto;
   font-family: "Asap Condensed", sans-serif;
-  background-color: #59ad51;
+  background-color: var(--green);
   border: none;
   border-radius: 5px;
   font-size: 5vw;
@@ -96,7 +128,7 @@ h2 {
 
 #play-again {
   font-family: "Asap Condensed", sans-serif;
-  background-color: #59ad51;
+  background-color: var(--green);
   border: none;
   border-radius: 5px;
   font-size: 5vw;
@@ -104,25 +136,18 @@ h2 {
 }
 
 #easy {
-  background-color: #448cbbff;
-  background: url("../img/ticket-blue.svg");
-  background-size: cover;
+  background-color: var(--green);
 }
 
 #medium {
-  background-color: #c8ab37ff;
-  background: url("../img/ticket.svg");
-  background-size: cover;
+  background-color: var(--orange);
 }
 
 #hard {
-  background-color: #d35847ff;
-  background: url("../img/ticket-red.svg");
-  background-size: cover;
+  background-color: var(--maroon);
 }
 
 #feedback {
-  font-family: "Permanent Marker", cursive;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,12 +155,11 @@ h2 {
 }
 
 #board {
-  background: #2b2b2b;
-  border: 2vw solid #473700;
-  border-radius: 4px;
-  border-image: url(../img/frame.png) 101 round;
-  width: 70vw;
-  height: 35vw;
+  background: var(--cream);
+  border-radius: 3vw;
+  color: var(--navy);
+  width: 80vw;
+  height: 40vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,6 +175,7 @@ h2 {
 #guess-counter,
 .guess,
 .crossed-out {
+  color: var(--orange);
   display: inline;
   font-size: 6vw;
   margin: 0 1.5vw 0 1.5vw;
@@ -158,22 +183,20 @@ h2 {
 
 .crossed-out {
   opacity: 0.5;
-}
-
-#message {
-  font-family: "Rye", system-ui;
+  color: var(--navy);
 }
 
 label {
   font-family: "Asap Condensed", sans-serif;
   font-size: 5vw;
+  color: var(--cream);
 }
 
 input[type="text"] {
   border: none;
-  border-bottom: 2px solid #fff;
-  background-color: #000;
-  color: #fff;
+  border-bottom: 2px solid var(--cream);
+  background-color: var(--navy);
+  color: var(--cream);
   outline: none;
   margin: 0 0 3vw 0;
 }
