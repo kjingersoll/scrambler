@@ -78,11 +78,13 @@ header {
 #scramble-container,
 #answer-container {
   width: 100%;
+  position: relative;
 }
 
 #scramble-tiles,
 #answer-tiles,
 #placeholders {
+  position: absolute;
   display: flex;
   width: 100%;
   justify-content: space-evenly;
