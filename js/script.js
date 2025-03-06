@@ -98,8 +98,15 @@ function checkMatch(event) {
 }
 
 function writeTiles(word, place) {
-  while (place.hasChildNodes()) {
-    place.removeChild(place.firstChild);
+  if (place == answerTiles) {
+    while (place.hasChildNodes()) {
+      place.removeChild(place.firstChild);
+      answerContainer.removeChild(answerContainer.firstChild);
+    }
+  } else {
+    while (place.hasChildNodes()) {
+      place.removeChild(place.firstChild);
+    }
   }
   for (letter of word) {
     let elementI = document.createElement("div");

@@ -24,13 +24,15 @@ body {
 }
 
 main {
-  display: flex;
+  height: 83vh;
+  /*display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center;*/
 }
 
 header {
+  height: 17vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +46,7 @@ header {
   justify-content: space-evenly;
   background: var(--cream);
   width: 80vw;
-  height: 140vw;
+  height: 79vh;
   border-radius: 3vw;
 }
 
@@ -55,7 +57,7 @@ header {
 .difficulty {
   /*margin: 5vw;*/
   width: 70vw;
-  height: 40vw;
+  height: 22.4vh;
   border: none;
   display: block;
   font-family: "Asap Condensed", sans-serif;
@@ -116,17 +118,6 @@ h1 {
   height: 10vw;
 }
 
-#submit {
-  display: block;
-  margin: auto;
-  font-family: "Asap Condensed", sans-serif;
-  background-color: var(--green);
-  border: none;
-  border-radius: 5px;
-  font-size: 5vw;
-  padding: 1vw 3vw;
-}
-
 #play-again {
   font-family: "Asap Condensed", sans-serif;
   background-color: var(--green);
@@ -180,6 +171,12 @@ h1 {
   margin: 0 1.5vw 0 1.5vw;
 }
 
+#guess-form {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
 label {
   font-family: "Asap Condensed", sans-serif;
   font-size: 5vw;
@@ -192,11 +189,15 @@ input[type="text"] {
   background-color: var(--navy);
   color: var(--cream);
   outline: none;
-  margin: 0 0 3vw 0;
 }
 
-.hide {
-  display: none;
+#submit {
+  font-family: "Asap Condensed", sans-serif;
+  background-color: var(--green);
+  border: none;
+  border-radius: 5px;
+  font-size: 5vw;
+  padding: 1vw 3vw;
 }
 
 .fail {
@@ -204,7 +205,12 @@ input[type="text"] {
   opacity: 0.6;
 }
 
-#difficult-select.hide {
+.hide {
+  display: none;
+}
+
+#difficult-select.hide,
+#gameplay.hide {
   display: none;
 }
 

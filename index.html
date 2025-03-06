@@ -32,6 +32,11 @@
             <div id="answer-tiles" class="hide"></div>
           </div>
         </div>
+        <form action="" id="guess-form">
+          <label for="guess">The Word Is:</label>
+          <input type="text" name="guess" id="guess" />
+          <input type="submit" id="submit" value="Guess!" />
+        </form>
         <div id="feedback">
           <div id="board">
             <p id="guesses-counter-title">Guesses Left:</p>
@@ -39,13 +44,8 @@
             <p id="message"></p>
           </div>
         </div>
-        <form action="" id="guess-form">
-          <label for="guess">The Word Is:</label>
-          <input type="text" name="guess" id="guess" />
-          <input type="submit" id="submit" value="Guess!" />
-        </form>
+        <button id="play-again" class="hide">Play Again</button>
       </div>
-      <button id="play-again" class="hide">Play Again</button>
     </main>
   </body>
 </html>
