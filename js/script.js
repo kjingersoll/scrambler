@@ -1,13 +1,10 @@
 const title = document.getElementById("title");
-const ticketContainer = document.getElementById("ticket-container");
-const ticketSides = document.getElementById("ticket-sides");
-const ticketFront = document.getElementById("ticket-front");
-const ticketBack = document.getElementById("ticket-back");
-const scrambleText = document.getElementById("scramble-text");
-const answerText = document.getElementById("answer-text");
+const tilesContainer = document.getElementById("tiles-container");
+const scrambleTiles = document.getElementById("scramble-tiles");
+const answerTiles = document.getElementById("answer-tiles");
+const answerContainer = document.getElementById("placeholders");
 const messageDisplay = document.getElementById("message");
 const guessCounter = document.getElementById("guess-counter");
-const guessNumbers = document.getElementsByClassName("guess");
 const guessForm = document.getElementById("guess-form");
 const guessInput = document.getElementById("guess");
 const submitButton = document.getElementById("submit");
@@ -15,30 +12,23 @@ const playAgainButton = document.getElementById("play-again");
 const difficultySelect = document.getElementById("difficult-select");
 const playArea = document.getElementById("gameplay");
 
-let word = "countdown";
+let answer = "countdown";
 let mixedWord = "";
 let possibles = [];
 let totalGuesses = 10;
 let remainingGuesses = 10;
-const guessesArray = [];
 let difficulty = "easy";
 
 function setDifficulty(e) {
   if (e.target.id == "easy") {
     difficulty = "easy";
     totalGuesses = 10;
-    ticketFront.style.background = "var(--green)";
-    ticketBack.style.background = "var(--green)";
   } else if (e.target.id == "medium") {
     difficulty = "medium";
     totalGuesses = 5;
-    ticketFront.style.background = "var(--orange)";
-    ticketBack.style.background = "var(--orange)";
   } else if (e.target.id == "hard") {
     difficulty = "hard";
     totalGuesses = 3;
-    ticketFront.style.background = "var(--maroon)";
-    ticketBack.style.background = "var(--maroon)";
   }
   playArea.classList.remove("hide");
   difficultySelect.classList.add("hide");
@@ -66,8 +56,8 @@ function checkLength(value) {
 function getWord() {
   let correctLengthWords = possibles.filter(checkLength);
   random = Math.floor(Math.random() * correctLengthWords.length);
-  word = correctLengthWords[random];
-  scrambleWord(word);
+  answer = correctLengthWords[random];
+  scrambleWord(answer);
 }
 
 function scrambleWord(word) {
@@ -79,10 +69,9 @@ function scrambleWord(word) {
     }
     mixedWord = wordArray.join("");
   } while (mixedWord === word);
-  scrambleText.innerText = mixedWord.toUpperCase();
-  answerText.innerText = word.toUpperCase();
-  remainingGuesses = totalGuesses;
-  writeGuesses();
+  writeTiles(mixedWord, scrambleTiles);
+  writeTiles(word, answerTiles);
+  manageGuesses(totalGuesses);
   console.log(word);
 }
 
@@ -90,53 +79,58 @@ function checkMatch(event) {
   event.preventDefault();
   remainingGuesses--;
   let guess = guessInput.value;
-  if (guess === word) {
-    ticketSides.classList.add("flip");
+  if (guess === answer) {
+    answerTiles.classList.remove("hide");
     messageDisplay.innerText = "Correct!";
     playAgainButton.classList.remove("hide");
     guessForm.classList.add("hide");
   } else if (remainingGuesses >= 1) {
     messageDisplay.innerText = "Incorrect";
     guessInput.value = "";
-    manageGuesses();
+    manageGuesses("decrement");
   } else {
     messageDisplay.innerText = "Try Again";
     playAgainButton.classList.remove("hide");
-    ticketContainer.classList.add("fail");
+    tilesContainer.classList.add("fail");
     guessForm.classList.add("hide");
-    manageGuesses();
+    manageGuesses("decrement");
   }
 }
 
-function writeGuesses() {
-  for (let i = 1; i <= totalGuesses; i++) {
+function writeTiles(word, place) {
+  while (place.hasChildNodes()) {
+    place.removeChild(place.firstChild);
+  }
+  for (letter of word) {
     let elementI = document.createElement("div");
-    elementI.innerHTML = `${i}`;
-    elementI.classList.add("guess");
-    guessCounter.append(elementI);
+    elementI.innerHTML = `${letter}`;
+    elementI.classList.add("letter");
+    place.append(elementI);
+    if (place == answerTiles) {
+      let tile = document.createElement("div");
+      tile.classList.add("tile");
+      answerContainer.append(tile);
+    }
   }
-  for (guess of guessNumbers) {
-    guessesArray.push(guess);
-  }
-  console.log(guessesArray);
 }
 
-function manageGuesses() {
-  guessesArray[remainingGuesses].classList.add("crossed-out");
+function manageGuesses(number) {
+  if (number == totalGuesses) {
+    remainingGuesses = totalGuesses;
+  } else if (number == "decrement") {
+    remainingGuesses = remainingGuesses--;
+  }
+  guessCounter.innerHTML = `${remainingGuesses}`;
 }
 
 function playAgain() {
-  ticketSides.classList.remove("flip");
-  ticketContainer.classList.remove("fail");
+  answerTiles.classList.add("hide");
+  tilesContainer.classList.remove("fail");
   guessForm.classList.remove("hide");
   playAgainButton.classList.add("hide");
   guessInput.value = "";
   messageDisplay.innerText = "";
-  remainingGuesses = totalGuesses;
-  for (guess of guessesArray) {
-    guess.remove();
-  }
-  guessesArray.length = 0;
+  manageGuesses(totalGuesses);
   difficultySelect.classList.remove("hide");
   playArea.classList.add("hide");
 }
